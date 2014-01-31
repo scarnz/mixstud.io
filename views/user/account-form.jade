@@ -1,0 +1,28 @@
+form#account(action='/', method='post')
+  .row
+    .small-12.large-6.columns
+      fieldset
+        legend Account Email
+        .row
+          mixin field(12, 'text', 'email', 'Email Address', user.email)
+        .row
+          mixin field(12, 'text', 'email2', 'Re-Type Email Address')
+        .row
+          .small-12.columns: a#update-email.button.radius.success.tiny Change My Email
+        .row
+          .small-12.columns
+            p#email-status.error-text
+    .small-12.large-6.columns
+      fieldset
+        legend Account Password
+        .row
+          mixin field(12, 'password', 'oldPassword', 'Current Password')
+        .row
+          mixin field(12, 'password', 'newPassword', 'New Password')
+        .row
+          mixin field(12, 'password', 'newPassword2', 'Re-type New password')
+        .row
+          .small-12.columns: a#update-password.button.radius.success.tiny Change My Password
+        .row
+          .small-12.columns
+            p#password-status.error-text

@@ -1,0 +1,20 @@
+extends ../template/layout
+include ../mixins/form-helper
+
+block content
+  .row
+    .small-12.columns
+      include post-form
+  if post
+    .row
+      .small-12.columns
+        h4 Images
+    if post.files
+      - var columns = 12 - (post.files.length * 2)
+      .row
+        each file in post.files
+          .small-2.columns.image-container
+            img(src='/uploads/'+post.id+'/'+file.name)
+            a.button.delete-image.tiny.alert(data-file-id=file.id) Delete
+
+        div(class='small-'+columns+' columns')

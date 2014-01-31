@@ -1,0 +1,12 @@
+form#profilePic(action='/', method='post')
+  fieldset
+    legend Profile Picture
+    if profile && profile.picture
+      .row
+        .small-12.columns
+          img(src='/profiles/'+user.id+'/'+profile.picture)
+    .row
+      .small-12.columns: a#update-profilePic.button.radius.success.tiny Update Picture
+    .row
+      .small-12.columns
+        p#profilePic-status.error-text
