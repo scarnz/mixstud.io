@@ -8,7 +8,6 @@
   "dependencies": {
     "express": "*",
     "jade": "*",
-    "express-less": "*",
     "lodash": "*",
     "moment": "*",
     "mongoose": "*",
