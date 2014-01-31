@@ -4,7 +4,7 @@ var less = require('express-less');
 var middleware = require('./lib/middleware');
 
 exports.initialize = function(app, RedisStore){
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.env.PORT || 3006);
   app.set('views', path.join(__dirname, 'views'));
   app.set('view engine', 'jade');
   app.set('moment', require('moment'));

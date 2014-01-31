@@ -12,7 +12,7 @@ var admin = require('./routes/admin');
 
 var app = express();
 var RedisStore = require('connect-redis')(express);
-mongoose.connect('mongodb://localhost/mixuploader');
+mongoose.connect('mongodb://localhost/mixstudio');
 
 // configure express
 require('./config').initialize(app, RedisStore);
