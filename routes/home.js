@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
 
+var moment = require('moment');
+
 /*
  * GET /
  */
@@ -8,7 +10,7 @@ var Post = mongoose.model('Post');
 exports.index = function(req, res){
   res.render('home/index',
     {
-      title: 'Home',
+      title: 'Mixstud.io',
       heading: 'Home',
       user: res.locals.user ? res.locals.user : null
     }
