@@ -1,37 +1,73 @@
-.contain-to-grid.fixed
-  nav.top-bar
-    ul.title-area
-      li.logo
-        a(href="/")
-          img(src='/images/slice-1.png')
-      li.toggle-topbar.menu-icon
-        a(href="#")
-          span Menu
+<!-- NAVIGATION AREA -->
+.full-width.navigation-area.fixed
+  .row
+    .large-12.columns
+      nav.top-bar(data-topbar)
+        ul.title-area
+          <!-- Title Area -->
+          li.logo.name
+            a(href="/"): img(src="/images/slice-1.png")
+          li.toggle-topbar.menu-icon
+            a(href="#")
+              span Menu
+        <!-- The Section wrap -->
+        section.top-bar-section
+          <!-- Left Nav Section -->
+          ul.left
+            if user
+            //- li.divider
+            //- li: a(href="/posts") Posts
+            //- li.divider
+          ul.right
+            if user && user.isAdmin
+              li.divider
+              li: a(href="/admin") Admin
+            li.divider
+            if user
+              li: a(href="/profile")= user.email
+              li.divider
+              li: a#logout-button(href="#") Logout
+              li.divider
+            else
+              li: a(href="/register") Register
+              li.divider
+              li: a(href="/login") Login
+              li.divider
 
-    section.top-bar-section
-      ul.left
-        if user
-          li.divider
-          li: a(href="/profile") My Profile
-        //- li.divider
-        //- li: a(href="/posts") Posts
-        li.divider
-      ul.right
-        if user && user.isAdmin
-          li.divider
-          li: a(href="/admin") Admin
-        li.divider
-        if user
-          li: span.username= user.email
-          li.divider
-          li: a#logout-button(href="#") Logout
-          li.divider
-        else
-          li: a(href="/register") Register
-          li.divider
-          li: a(href="/login") Login
-          li.divider
 
+
+//- .contain-to-grid
+//-   nav.top-bar(data-topbar)
+//-     ul.title-area
+
+//-       li.logo.name
+//-         a(href="/")
+//-           img(src='/images/slice-1.png')
+//-       li.toggle-topbar.menu-icon
+//-         a(href="#")
+//-           span Menu
+
+//-     section.top-bar-section
+//-       ul.left
+//-         if user
+//-         //- li.divider
+//-         //- li: a(href="/posts") Posts
+//-         li.divider
+//-       ul.right
+//-         if user && user.isAdmin
+//-           li.divider
+//-           li: a(href="/admin") Admin
+//-         li.divider
+//-         if user
+//-           li: a(href="/profile")= user.email
+//-           li.divider
+//-           li: a#logout-button(href="#") Logout
+//-           li.divider
+//-         else
+//-           li: a(href="/register") Register
+//-           li.divider
+//-           li: a(href="/login") Login
+//-           li.divider
 .row
   .small-12.columns
     h3= heading

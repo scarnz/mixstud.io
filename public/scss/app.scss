@@ -41,13 +41,167 @@
 
 $base: #eee;
 $navBg: #444;
+$navBg2: #333;
 $navDivider: #777;
 $numBg: #888;
 $subdued: #888;
+$orange: rgba(251, 195, 90, 1);
 
 body{
   background-color: $base;
 }
+
+/** Set the backgrounds for the different sections **/
+.header-area {
+  min-height: 60px;
+
+  img {
+    margin: 5px;
+    height: 50px;
+
+  }
+}
+
+.navigation-area {
+
+}
+
+.full-width {
+  background: $navBg;
+  min-width: 100%;
+  position: relative;
+}
+
+/** Changes background color, height and margin of the border **/
+.top-bar {
+  background: none;
+  height: 45px;
+  line-height: 45px;
+}
+
+/** Removes black background on menu bar **/
+.top-bar-section ul {
+  background: none;
+}
+
+.top-bar-section > ul > li.divider {
+  border-color: #666;
+  height: 45px;
+}
+
+/** Removes black background on menu item **/
+.top-bar-section li:not(.has-form) a:not(.button) {
+  background: none;
+  color: white;
+  line-height: 45px;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button):hover {
+  background-color: $orange;
+}
+
+.top-bar-section ul li.active > a {
+  background-color: $orange;
+  color: #fff;
+}
+
+/** Changes the hover state of non active menu items **/
+.top-bar-section ul li:hover > a {
+  background-color: $orange;
+}
+
+.top-bar-section li:hover a {
+  color: #fff;
+}
+
+/** Changes non active menu items text color to black **/
+.top-bar-section ul li > a {
+
+}
+/** Changes the dropdown menu items **/
+.top-bar-section ul.dropdown li a:not(.button) {
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.top-bar-section ul.dropdown li a:hover:not(.button) {
+  background: none repeat scroll 0 0 $navBg;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(180,180,180,.6);
+}
+
+/** IMPORTANT fill for the ul dropdown container **/
+.top-bar-section ul.dropdown {
+  background-color: none;
+  color: #fff;
+}
+/** This fixes the position and the color of the dropdown arrow **/
+.top-bar-section .has-dropdown > a:after {
+  background: none;
+  border-color: $navBg transparent transparent;
+  margin-top: 2.5px;
+}
+
+.top-bar .title-area, .top-bar.expanded .title-area {
+
+  background: $navBg;
+}
+
+.top-bar.expanded {
+  background: $navBg2;
+}
+
+.top-bar .toggle-topbar.menu-icon a {
+  // color: $navBg;
+}
+.top-bar .toggle-topbar.menu-icon a:hover {
+  color: #888;
+}
+
+.top-bar .toggle-topbar.menu-icon a span {
+  box-shadow: 0 10px 0 1px $navBg, 0 16px 0 1px $navBg, 0 22px 0 1px $navBg;
+  -webkit-box-shadow: 0 10px 0 1px $navBg, 0 16px 0 1px $navBg, 0 22px 0 1px $navBg;
+}
+.top-bar .toggle-topbar.menu-icon a:hover span {
+  box-shadow: 0 10px 0 1px $navBg, 0 16px 0 1px $navBg, 0 22px 0 1px $navBg;
+  -webkit-box-shadow: 0 10px 0 1px $navBg, 0 16px 0 1px $navBg, 0 22px 0 1px $navBg;
+}
+
+footer {
+  margin-top: 50px;
+}
+
+@media only screen and (max-width: 942px) {
+  /* Makes the responsive menu fit in the navigation container and change its background to grey */
+  .top-bar ul {
+      background: $navBg;
+
+  }
+  /* Change non active menu item color to black */
+  .top-bar-section ul li > a {
+      color: #fff;
+  }
+  /* Gives the dropdown ul a black fill */
+  .top-bar-section ul {
+      background: none;
+  }
+  /* Give the BACK button after going in a submenu the appropriate filling */
+  .top-bar-section .dropdown li.title h5 a {
+      line-height: 45px;
+  }
+  /* This fixes the position and the color of the dropdown arrow */
+  .top-bar-section .has-dropdown > a:after {
+      border-color: rgba(255, 255, 255, 1) transparent transparent;
+      margin-top: 2.5px;
+  }
+
+  .top-bar-section li:hover a {
+    background: red;
+  }
+} /* end media query */
+
 
 h2.number {
   position: absolute;
@@ -62,64 +216,36 @@ h2.number {
   text-align: center;
 }
 
-li {
-  list-style: none;
-  height: 140px;
+#upload {
+  li {
+    list-style: none;
+    height: 140px;
 
-  p {
-  margin: -70px 0 16px 100px;
-  }
-}
-
-li.step-two p {
-  margin-top: -90px;
-}
-
-li.step-three a {
-  position: absolute;
-  margin: -80px 0 0 100px;
-}
-
-input[type="file"]{
-  margin: 0 0 0em 100px;
-}
-
-.large-text {
-  font-size: 25px;
-}
-
-.subdued-text {
-  color: $subdued;
-}
-
-.contain-to-grid {
-  background-color: $navBg;
-
-  .top-bar {
-    // overflow: hidden;
-    background-color: $navBg;
+    p {
+    margin: -70px 0 16px 100px;
+    }
   }
 
-  .top-bar-section {
+  li.step-two p {
+    margin-top: -90px;
+  }
 
-    // ul {
+  li.step-three a {
+    position: absolute;
+    margin: -80px 0 0 100px;
+  }
 
-      // li {
-      //   border-color: $navDivider;
-      //   background-color: $navBg;
-      //   a {
-      //     background-color: $navBg;
-      //   }
-      // }
+  input[type="file"]{
+    margin: 0 0 0em 100px;
+  }
 
-  //     li span.username {
-  //       line-height: 45px;
-  //       font-size: 14px;
-  //       color: white;
-  //       padding: 0 10px;
-  //     }
-  //   }
-  // }
+  .large-text {
+    font-size: 25px;
+  }
+
+  .subdued-text {
+    color: $subdued;
+  }
 }
 
 .bottom-bar{
