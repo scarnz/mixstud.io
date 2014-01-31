@@ -19,16 +19,16 @@
             //- li: a(href="/posts") Posts
             //- li.divider
           ul.right
-            if user && user.isAdmin
-              li.divider
-              li: a(href="/admin") Admin
-            li.divider
             if user
               li: a(href="/profile")= user.email
+              if user.isAdmin
+                li.divider
+                li: a(href="/admin") Admin
               li.divider
               li: a#logout-button(href="#") Logout
               li.divider
             else
+              li.divider
               li: a(href="/register") Register
               li.divider
               li: a(href="/login") Login

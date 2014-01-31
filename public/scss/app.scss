@@ -95,21 +95,19 @@ body{
 }
 
 .top-bar-section li:not(.has-form) a:not(.button):hover {
-  background-color: $orange;
+  background: none;
+  color: $orange;
 }
 
 .top-bar-section ul li.active > a {
-  background-color: $orange;
-  color: #fff;
+  background: none;
+  color: $orange;
 }
 
 /** Changes the hover state of non active menu items **/
 .top-bar-section ul li:hover > a {
-  background-color: $orange;
-}
-
-.top-bar-section li:hover a {
-  color: #fff;
+  background: none;
+  color: $orange;
 }
 
 /** Changes non active menu items text color to black **/

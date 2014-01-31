@@ -7416,7 +7416,7 @@ body {
   margin: 5px;
 }
 
-/* line 69, ../scss/app.scss */
+/* line 67, ../scss/app.scss */
 .full-width {
   background: #444444;
   min-width: 100%;
@@ -7424,7 +7424,7 @@ body {
 }
 
 /** Changes background color, height and margin of the border **/
-/* line 76, ../scss/app.scss */
+/* line 74, ../scss/app.scss */
 .top-bar {
   background: none;
   height: 45px;
@@ -7432,57 +7432,54 @@ body {
 }
 
 /** Removes black background on menu bar **/
-/* line 83, ../scss/app.scss */
+/* line 81, ../scss/app.scss */
 .top-bar-section ul {
   background: none;
 }
 
-/* line 87, ../scss/app.scss */
+/* line 85, ../scss/app.scss */
 .top-bar-section > ul > li.divider {
   border-color: #666;
   height: 45px;
 }
 
 /** Removes black background on menu item **/
-/* line 93, ../scss/app.scss */
+/* line 91, ../scss/app.scss */
 .top-bar-section li:not(.has-form) a:not(.button) {
   background: none;
   color: white;
   line-height: 45px;
 }
 
-/* line 99, ../scss/app.scss */
+/* line 97, ../scss/app.scss */
 .top-bar-section li:not(.has-form) a:not(.button):hover {
-  background-color: #fbc35a;
+  background: none;
+  color: #fbc35a;
 }
 
-/* line 103, ../scss/app.scss */
+/* line 102, ../scss/app.scss */
 .top-bar-section ul li.active > a {
-  background-color: #fbc35a;
-  color: #fff;
+  background: none;
+  color: #fbc35a;
 }
 
 /** Changes the hover state of non active menu items **/
-/* line 109, ../scss/app.scss */
+/* line 108, ../scss/app.scss */
 .top-bar-section ul li:hover > a {
-  background-color: #fbc35a;
-}
-
-/* line 113, ../scss/app.scss */
-.top-bar-section li:hover a {
-  color: #fff;
+  background: none;
+  color: #fbc35a;
 }
 
 /** Changes non active menu items text color to black **/
 /** Changes the dropdown menu items **/
-/* line 122, ../scss/app.scss */
+/* line 118, ../scss/app.scss */
 .top-bar-section ul.dropdown li a:not(.button) {
   border-width: 1px;
   border-style: solid;
   border-color: transparent;
 }
 
-/* line 128, ../scss/app.scss */
+/* line 124, ../scss/app.scss */
 .top-bar-section ul.dropdown li a:hover:not(.button) {
   background: none repeat scroll 0 0 #444444;
   border-width: 1px;
@@ -7491,91 +7488,91 @@ body {
 }
 
 /** IMPORTANT fill for the ul dropdown container **/
-/* line 136, ../scss/app.scss */
+/* line 132, ../scss/app.scss */
 .top-bar-section ul.dropdown {
   background-color: none;
   color: #fff;
 }
 
 /** This fixes the position and the color of the dropdown arrow **/
-/* line 141, ../scss/app.scss */
+/* line 137, ../scss/app.scss */
 .top-bar-section .has-dropdown > a:after {
   background: none;
   border-color: #444444 transparent transparent;
   margin-top: 2.5px;
 }
 
-/* line 147, ../scss/app.scss */
+/* line 143, ../scss/app.scss */
 .top-bar .title-area, .top-bar.expanded .title-area {
   background: #444444;
 }
 
-/* line 152, ../scss/app.scss */
+/* line 148, ../scss/app.scss */
 .top-bar.expanded {
   background: #333333;
 }
 
-/* line 159, ../scss/app.scss */
+/* line 155, ../scss/app.scss */
 .top-bar .toggle-topbar.menu-icon a:hover {
   color: #888;
 }
 
-/* line 163, ../scss/app.scss */
+/* line 159, ../scss/app.scss */
 .top-bar .toggle-topbar.menu-icon a span {
   box-shadow: 0 10px 0 1px #444444, 0 16px 0 1px #444444, 0 22px 0 1px #444444;
   -webkit-box-shadow: 0 10px 0 1px #444444, 0 16px 0 1px #444444, 0 22px 0 1px #444444;
 }
 
-/* line 167, ../scss/app.scss */
+/* line 163, ../scss/app.scss */
 .top-bar .toggle-topbar.menu-icon a:hover span {
   box-shadow: 0 10px 0 1px #444444, 0 16px 0 1px #444444, 0 22px 0 1px #444444;
   -webkit-box-shadow: 0 10px 0 1px #444444, 0 16px 0 1px #444444, 0 22px 0 1px #444444;
 }
 
-/* line 172, ../scss/app.scss */
+/* line 168, ../scss/app.scss */
 footer {
   margin-top: 50px;
 }
 
 @media only screen and (max-width: 942px) {
   /* Makes the responsive menu fit in the navigation container and change its background to grey */
-  /* line 178, ../scss/app.scss */
+  /* line 174, ../scss/app.scss */
   .top-bar ul {
     background: #444444;
   }
 
   /* Change non active menu item color to black */
-  /* line 183, ../scss/app.scss */
+  /* line 179, ../scss/app.scss */
   .top-bar-section ul li > a {
     color: #fff;
   }
 
   /* Gives the dropdown ul a black fill */
-  /* line 187, ../scss/app.scss */
+  /* line 183, ../scss/app.scss */
   .top-bar-section ul {
     background: none;
   }
 
   /* Give the BACK button after going in a submenu the appropriate filling */
-  /* line 191, ../scss/app.scss */
+  /* line 187, ../scss/app.scss */
   .top-bar-section .dropdown li.title h5 a {
     line-height: 45px;
   }
 
   /* This fixes the position and the color of the dropdown arrow */
-  /* line 195, ../scss/app.scss */
+  /* line 191, ../scss/app.scss */
   .top-bar-section .has-dropdown > a:after {
     border-color: white transparent transparent;
     margin-top: 2.5px;
   }
 
-  /* line 200, ../scss/app.scss */
+  /* line 196, ../scss/app.scss */
   .top-bar-section li:hover a {
     background: red;
   }
 }
 /* end media query */
-/* line 206, ../scss/app.scss */
+/* line 202, ../scss/app.scss */
 h2.number {
   position: absolute;
   background: #fff;
@@ -7589,38 +7586,38 @@ h2.number {
   text-align: center;
 }
 
-/* line 220, ../scss/app.scss */
+/* line 216, ../scss/app.scss */
 #upload li {
   list-style: none;
   height: 140px;
 }
-/* line 224, ../scss/app.scss */
+/* line 220, ../scss/app.scss */
 #upload li p {
   margin: -70px 0 16px 100px;
 }
-/* line 229, ../scss/app.scss */
+/* line 225, ../scss/app.scss */
 #upload li.step-two p {
   margin-top: -90px;
 }
-/* line 233, ../scss/app.scss */
+/* line 229, ../scss/app.scss */
 #upload li.step-three a {
   position: absolute;
   margin: -80px 0 0 100px;
 }
-/* line 238, ../scss/app.scss */
+/* line 234, ../scss/app.scss */
 #upload input[type="file"] {
   margin: 0 0 0em 100px;
 }
-/* line 242, ../scss/app.scss */
+/* line 238, ../scss/app.scss */
 #upload .large-text {
   font-size: 25px;
 }
-/* line 246, ../scss/app.scss */
+/* line 242, ../scss/app.scss */
 #upload .subdued-text {
   color: #888888;
 }
 
-/* line 251, ../scss/app.scss */
+/* line 247, ../scss/app.scss */
 .bottom-bar {
   position: fixed;
   bottom: 0px;
@@ -7630,34 +7627,34 @@ h2.number {
   background-color: #444444;
 }
 
-/* line 261, ../scss/app.scss */
+/* line 257, ../scss/app.scss */
 .logo img {
   padding: 5px;
   height: 45px;
 }
 
-/* line 267, ../scss/app.scss */
+/* line 263, ../scss/app.scss */
 .hidden {
   display: none;
 }
 
-/* line 271, ../scss/app.scss */
+/* line 267, ../scss/app.scss */
 .error-text {
   color: red;
   font-style: italic;
 }
 
-/* line 276, ../scss/app.scss */
+/* line 272, ../scss/app.scss */
 #new-post textarea {
   height: 250px;
 }
 
-/* line 280, ../scss/app.scss */
+/* line 276, ../scss/app.scss */
 #postId {
   width: 50px;
 }
 
-/* line 284, ../scss/app.scss */
+/* line 280, ../scss/app.scss */
 .file-thumb {
   width: 150px;
 }
