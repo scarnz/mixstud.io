@@ -10,8 +10,9 @@
 
     section.top-bar-section
       ul.left
-        li.divider
-        li: a(href="/profile") My Profile
+        if user
+          li.divider
+          li: a(href="/profile") My Profile
         li.divider
         li: a(href="/posts") Posts
         li.divider
