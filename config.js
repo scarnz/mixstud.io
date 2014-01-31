@@ -1,7 +1,7 @@
 var express = require('express');
 var path = require('path');
-var less = require('express-less');
 var middleware = require('./lib/middleware');
+var compass = require('node-compass');
 
 exports.initialize = function(app, RedisStore){
   app.set('port', process.env.PORT || 3006);
@@ -12,8 +12,13 @@ exports.initialize = function(app, RedisStore){
   app.use(express.logger('dev'));
   app.use(express.bodyParser({uploadDir: __dirname + '/tmp'}));
   app.use(express.methodOverride());
+  app.use(compass({
+      sass: path.join(__dirname, '/public/scss'),
+      logging: true,
+      cache: false,
+      config_file: __dirname + '/public/config.rb'
+  }));
   app.use(express.static(path.join(__dirname, 'public')));
-  app.use('/less', less(__dirname + '/less', { compress: true }));
   app.use(express.cookieParser());
   app.use(express.session({
     store : new RedisStore({host: 'localhost', port: 6379}),

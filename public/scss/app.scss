@@ -1,0 +1,160 @@
+@import "settings";
+@import "foundation";
+
+// Or selectively include components
+// @import
+//   "foundation/components/accordion",
+//   "foundation/components/alert-boxes",
+//   "foundation/components/block-grid",
+//   "foundation/components/breadcrumbs",
+//   "foundation/components/button-groups",
+//   "foundation/components/buttons",
+//   "foundation/components/clearing",
+//   "foundation/components/dropdown",
+//   "foundation/components/dropdown-buttons",
+//   "foundation/components/flex-video",
+//   "foundation/components/forms",
+//   "foundation/components/grid",
+//   "foundation/components/inline-lists",
+//   "foundation/components/joyride",
+//   "foundation/components/keystrokes",
+//   "foundation/components/labels",
+//   "foundation/components/magellan",
+//   "foundation/components/orbit",
+//   "foundation/components/pagination",
+//   "foundation/components/panels",
+//   "foundation/components/pricing-tables",
+//   "foundation/components/progress-bars",
+//   "foundation/components/reveal",
+//   "foundation/components/side-nav",
+//   "foundation/components/split-buttons",
+//   "foundation/components/sub-nav",
+//   "foundation/components/switch",
+//   "foundation/components/tables",
+//   "foundation/components/tabs",
+//   "foundation/components/thumbs",
+//   "foundation/components/tooltips",
+//   "foundation/components/top-bar",
+//   "foundation/components/type",
+//   "foundation/components/offcanvas",
+//   "foundation/components/visibility";
+
+$base: #eee;
+$navBg: #444;
+$navDivider: #777;
+$numBg: #888;
+$subdued: #888;
+
+body{
+  background-color: $base;
+}
+
+h2.number {
+  position: absolute;
+  background: #fff;
+  border-radius: 40px;
+  font-weight: 400;
+  height: 80px;
+  position: relative;
+  width: 80px;
+  z-index: 100;
+  padding: 13px;
+  text-align: center;
+}
+
+li {
+  list-style: none;
+  height: 140px;
+
+  p {
+  margin: -70px 0 16px 100px;
+  }
+}
+
+li.step-two p {
+  margin-top: -90px;
+}
+
+li.step-three a {
+  position: absolute;
+  margin: -80px 0 0 100px;
+}
+
+input[type="file"]{
+  margin: 0 0 0em 100px;
+}
+
+.large-text {
+  font-size: 25px;
+}
+
+.subdued-text {
+  color: $subdued;
+}
+
+.contain-to-grid {
+  background-color: $navBg;
+
+  .top-bar {
+    // overflow: hidden;
+    background-color: $navBg;
+  }
+
+  .top-bar-section {
+
+    // ul {
+
+      // li {
+      //   border-color: $navDivider;
+      //   background-color: $navBg;
+      //   a {
+      //     background-color: $navBg;
+      //   }
+      // }
+
+  //     li span.username {
+  //       line-height: 45px;
+  //       font-size: 14px;
+  //       color: white;
+  //       padding: 0 10px;
+  //     }
+  //   }
+  // }
+}
+
+.bottom-bar{
+position: fixed;
+bottom: 0px;
+width: 100%;
+margin-bottom: 0px;
+height: 20px;
+background-color: $navBg;
+}
+
+
+.logo img{
+  padding: 5px;
+  height: 45px;
+
+}
+
+.hidden{
+  display: none;
+}
+
+.error-text {
+  color: red;
+  font-style: italic;
+}
+
+#new-post textarea {
+  height: 250px;
+}
+
+#postId {
+  width: 50px;
+}
+
+.file-thumb {
+  width: 150px;
+}

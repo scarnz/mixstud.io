@@ -20,7 +20,8 @@
     "require-dir": "*",
     "bcrypt": "*",
     "mongoose-unique-validator": "*",
-    "async-foreach": "*"
+    "async-foreach": "*",
+    "node-compass": "*"
   },
   "devDependencies": {
     "grunt": "*",
