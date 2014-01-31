@@ -1,4 +1,4 @@
-NODE-TEMPLATE
+Mixstud.io
 =============
 
-A base node.js template with authentication
+A development Node.js app for uploading large zip files to dropbox directly from the client
