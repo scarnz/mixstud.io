@@ -22,6 +22,40 @@ function initialize(){
   $('body').find('a.delete-image').on('click', clickDeleteFile);
   $('body').find('a.delete-post').on('click', clickDeletePost);
   $('body').find('a.delete-user').on('click', clickDeleteUser);
+  $('body').find('a#upload-button').on('click', clickUploadButton);
+}
+
+function doHelloWorld(client) {
+  client.writeFile('hello2.txt', 'Hello, World!', function (error,stat) {
+      if (error) {
+          alert('Error: ' + error);
+      } else {
+          console.log('file written');
+          console.log(stat);
+      }
+  });
+}
+
+function clickUploadButton(e){
+  var url = '/upload';
+  var data = {};
+  sendAjaxRequest(url, data, 'post', null, e, function(response){
+    var client = new Dropbox.Client({ key: response.apiKey, secret: response.apiSecret });
+    client.authenticate(function(error, client) {
+      if (error) {
+          console.log('There was an error.');
+      } else {
+        var dbClient = new Dropbox.Client({
+          key         : response.apiKey,
+          secret      : response.apiSecret,
+          sandbox     : false,
+          token       : client.oauth._token,
+          tokenSecret : client.oauth._secret
+        });
+        doHelloWorld(dbClient);
+      }
+    });
+  });
 }
 
 function clickRegister(e){

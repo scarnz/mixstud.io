@@ -26,6 +26,7 @@ var m = require('./lib/middleware');
 //HOME
 app.get('/', home.index);
 app.get('/posts', home.posts);
+app.post('/upload', home.dropbox);
 
 //AUTH
 app.get('/login', home.login);

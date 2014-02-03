@@ -20,7 +20,8 @@
     "bcrypt": "*",
     "mongoose-unique-validator": "*",
     "async-foreach": "*",
-    "node-compass": "*"
+    "node-compass": "*",
+    "dropbox": "*"
   },
   "devDependencies": {
     "grunt": "*",

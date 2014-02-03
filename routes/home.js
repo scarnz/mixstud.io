@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
-
+var Dropbox = require('dropbox');
 var moment = require('moment');
 
 /*
@@ -16,6 +16,18 @@ exports.index = function(req, res){
     }
   );
 };
+
+/*
+ * POST /upload
+ */
+
+exports.dropbox = function(req, res){
+  var apiKey = '2ypofds0ov0hvat';
+  var apiSecret = 'mxw1tn51mbbvy20';
+  res.send({status: "ok", apiKey: apiKey, apiSecret: apiSecret});
+};
+
+
 
 /*
  * GET /posts
