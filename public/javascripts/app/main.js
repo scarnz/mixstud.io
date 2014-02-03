@@ -28,10 +28,9 @@ function initialize(){
 function doHelloWorld(client) {
   client.writeFile('hello2.txt', 'Hello, World!', function (error,stat) {
       if (error) {
-          alert('Error: ' + error);
+          alert('ERROR!');
       } else {
-          console.log('file written');
-          console.log(stat);
+          alert('THANK YOU');
       }
   });
 }
