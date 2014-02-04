@@ -18,32 +18,27 @@ exports.index = function(req, res){
 };
 
 /*
+ * GET /upload
+ */
+
+exports.upload = function(req, res){
+  res.render('home/upload',
+    {
+      title: 'Mixstud.io',
+      heading: 'Upload',
+      user: res.locals.user ? res.locals.user : null
+    }
+  );
+};
+
+/*
  * POST /upload
  */
 
 exports.dropbox = function(req, res){
   var apiKey = '2ypofds0ov0hvat';
   var apiSecret = 'mxw1tn51mbbvy20';
-  res.send({status: "ok", apiKey: apiKey, apiSecret: apiSecret});
-};
-
-
-
-/*
- * GET /posts
- */
-
-exports.posts = function(req, res){
-  Post.find().populate('files').exec(function(err,posts){
-    res.render('home/posts',
-      {
-        title: 'Posts',
-        heading: 'Posts',
-        user: res.locals.user ? res.locals.user : null,
-        posts: posts
-      }
-    );
-  });
+  res.send({email: res.locals.user.email, apiKey: apiKey, apiSecret: apiSecret});
 };
 
 /*

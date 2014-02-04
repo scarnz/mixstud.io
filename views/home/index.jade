@@ -4,31 +4,4 @@ include ../mixins/form-helper
 block content
   .row
     .small-12.large-9.large-centered.columns
-      dl.tabs
-        dd.active
-          a(href='#upload') upload
-        dd
-          a(href="#upload-history") upload-history
-      .tabs-content
-        .content.active#upload
-          p.panel.large-text The first step to getting a great mix for your tracks is to get your files to us. <strong>Here's how.</strong>
-
-          .small-12.large-12.columns
-            form#upload(action='/upload', method='post', enctype="multipart/form-data")
-              li.step-one
-                h2.number 1
-                p On your computer, compress all your track files into a ZIP file. <span class="subdued-text">[Show me how.]</span>
-
-              li.step-two
-                h2.number 2
-                p Select your ZIP file.
-                input(id="zip-file", type="file", name="zip-file")
-              li.step-three
-                h2.number 3
-                a#upload-button.button.medium.radius UPLOAD
-
-        .content#upload-history
-          ul
-            li one
-            li two
-            li three
+      a(href="/upload") UPLOADER
