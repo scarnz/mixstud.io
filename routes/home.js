@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
-var Post = mongoose.model('Post');
 var Dropbox = require('dropbox');
 var moment = require('moment');
+var s3 = require('../lib/s3.js');
 
 /*
  * GET /
@@ -36,9 +36,18 @@ exports.upload = function(req, res){
  */
 
 exports.dropbox = function(req, res){
-  var apiKey = '2ypofds0ov0hvat';
-  var apiSecret = 'mxw1tn51mbbvy20';
-  res.send({email: res.locals.user.email, apiKey: apiKey, apiSecret: apiSecret});
+  // var policy = "{'expiration': '2020-01-01T12:00:00.000Z', 'conditions': [{'bucket': 'mixstudio'}]}";
+  // var policy = "{'expiration': '2020-01-01T12:00:00.000Z', 'conditions': [{'bucket': 'mixstudio'},['starts-with', '$key', ''], ['starts-with', '$acl', ''], ['starts-with', '$Content-Type', ''], ['eq', '$success_action_status', '201']]}";
+
+  // policy = new Buffer(policy).toString('base64')
+  var key = s3.getKey();
+  var policy = "eydleHBpcmF0aW9uJzogJzIwMjAtMDEtMDFUMTI6MDA6MDAuMDAwWicsICdjb25kaXRpb25zJzogWwp7J2J1Y2tldCc6ICdtaXhzdHVkaW8nfSwgWydzdGFydHMtd2l0aCcsICcka2V5JywgJ3VwbG9hZHMvJ11dfQ=="
+  res.send({
+    key: key,
+    signature: '/54JU5c4qOaawa1QtZX+JAxyrrU=',
+    policy: policy,
+    email: res.locals.user.email
+  });
 };
 
 /*

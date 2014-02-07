@@ -280,3 +280,31 @@ background-color: $navBg;
 .file-thumb {
   width: 150px;
 }
+
+#progress {
+  margin: 20px 0 0 100px;
+  width: 200px;
+  background-color: transparent;
+  border-radius: 12px; /* (height of inner div) / 2 + padding */
+  padding: 2px;
+}
+
+#progress > .bar {
+  background-color: $orange;
+  width: 0%; /* Adjust with JavaScript */
+  height: 22px;
+  border-radius: 11px;
+}
+
+#spinner {
+  margin: 11px 0 0 12px;
+}
+
+#progress > .percent {
+  margin: -27px 5px 0 0;
+}
+
+#progress > .error-text {
+  display: none;
+  font-size: 14px;
+}

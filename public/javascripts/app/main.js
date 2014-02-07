@@ -1,7 +1,5 @@
 $(document).ready(initialize);
 
-var socket;
-
 function initialize(){
   $(document).foundation();
   $('#register').on('click', clickRegister);
@@ -11,47 +9,69 @@ function initialize(){
   $('#update-password').on('click', clickUpdatePassword);
   $('#update-profile').on('click', clickUpdateProfile);
   $('#update-profilePic').on('click', clickUpdateProfilePic);
-  $('#upload-button').on('click', clickUploadButton);
+  $('#upload-to-s3').on('click', clickUploadToS3);
 }
 
-function zipFileUpload(email,client) {
-  var file, fileName;
-  file = $('form#upload input[type="file"]')[0].files[0];
-  if(file){
-    fileName = file.name;
-    fileName = email + "/" + fileName;
-    client.writeFile(fileName, file, function (error,stat) {
-      if (error) {
-          alert('ERROR!');
-      } else {
-          alert('THANK YOU');
-      }
-    });
-  } else {
-    alert('Please select a file');
-  }
-}
-
-function clickUploadButton(e){
+function clickUploadToS3(e){
   var url = '/upload';
   var data = {};
-  sendAjaxRequest(url, data, 'post', null, e, function(response){
-    var client = new Dropbox.Client({ key: response.apiKey, secret: response.apiSecret });
-    client.authenticate(function(error, client) {
-      if (error) {
-          console.log('There was an error.');
-      } else {
-        var dbClient = new Dropbox.Client({
-          key         : response.apiKey,
-          secret      : response.apiSecret,
-          sandbox     : false,
-          token       : client.oauth._token,
-          tokenSecret : client.oauth._secret
-        });
-        zipFileUpload(response.email,dbClient);
+  var $file = $('form#s3uploader input[type="file"]')[0].files[0];
+  var fileData = new FormData();
+  var fileName = $file.name;
+  uploadSpinner();
+  $('#spinner').css('display', 'block');
+  $('#progress .error-text').css('display', 'none');
+
+  data.filename = fileName;
+  sendAjaxRequest(url, data, 'post', null, e, function(r){
+    var key = "uploads/" + r.email + "/" + fileName
+    url = 'http://mixstudio.s3.amazonaws.com';
+    fileData.append('key', key);
+    fileData.append('AWSAccessKeyId', r.key);
+    fileData.append('policy', r.policy);
+    fileData.append('signature', r.signature);
+    fileData.append("file",$file);
+    sendAjaxFiles(url, fileData, 'post', null, e, function(response){
+      $('form#s3uploader')[0].reset();
+      $('#progress .error-text').text('File uploaded successfully.');
+      $('#progress .error-text').css('display', 'block');
+      $('#spinner').css('display', 'none');
+      $('#progress .percent').empty();
+      $('#progress > .bar').css('width','0%');
+    },
+    function(data){
+      if (data.lengthComputable) {
+        // var percent = Math.round((data.loaded / data.total) * 100);
+        var percent = Math.round((data.loaded / data.total) * 10000) / 100;
+        $('#progress .percent').text(percent.toFixed(2) + '%');
+        $('#progress .bar').css('width', percent + '%');
+
       }
     });
   });
+}
+
+function uploadSpinner() {
+  var opts = {
+    lines: 9, // The number of lines to draw
+    length: 3, // The length of each line
+    width: 2, // The line thickness
+    radius: 5, // The radius of the inner circle
+    corners: 1, // Corner roundness (0..1)
+    rotate: 0, // The rotation offset
+    direction: 1, // 1: clockwise, -1: counterclockwise
+    color: '#000', // #rgb or #rrggbb or array of colors
+    speed: 1.8, // Rounds per second
+    trail: 60, // Afterglow percentage
+    shadow: false, // Whether to render a shadow
+    hwaccel: false, // Whether to use hardware acceleration
+    className: 'spinner', // The CSS class to assign to the spinner
+    zIndex: 2e9, // The z-index (defaults to 2000000000)
+    top: 'auto', // Top position relative to parent in px
+    left: 'auto' // Left position relative to parent in px
+  };
+  var target = document.getElementById('spinner');
+  var spinner = new Spinner(opts).spin(target);
 }
 
 function clickRegister(e){
@@ -107,8 +127,6 @@ function clickUpdateProfile(e) {
 
 function clickUpdateProfilePic(e) {
   alert();
-
-
 }
 
 function htmlRegisterComplete(data) {
@@ -179,7 +197,6 @@ function htmlUpdateEmailComplete(data) {
   }
 }
 
-
 function htmlUpdatePasswordComplete(data) {
   switch(data.status){
     case 'ok':
@@ -217,5 +234,4 @@ function htmlUpdateProfileInfoComplete(data) {
 
        // $('form#account input[name="email"]').val('');
        // $('form#account input[name="email2"]').val('');
-
 }

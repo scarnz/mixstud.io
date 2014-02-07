@@ -2,13 +2,16 @@ form#registration(action='/', method='post')
   fieldset
     legend Registration
     .row
-      mixin field(12, 'text', 'email', 'Email Address')
+      .large-6.medium-6.small-12.columns
+        label(for="email") Email Address:
+        input(type="text", name="email")
     .row
-      mixin field(12, 'password', 'password', 'Password')
+      .large-6.medium-6.small-12.columns
+        label(for="password") Password:
+        input(type="password", name="password")
+      .large-6.medium-6.small-12.columns
+        label(for="password") Re-Enter Password:
+        input(type="password", name="password2")
     .row
-      mixin field(12, 'password', 'password2', 'Re-type password')
-    .row
-      .small-12.columns: button#register.radius.success.tiny Register
-    .row
-      .small-12.columns
-        p#register-error.error-text
+      .large-9.medium-9.small-12.columns: p#register-error.error-text
+      .large-3.medium-3.small-4.small-offset-8.columns: button#register.radius.success.small.expand Register

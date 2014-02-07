@@ -5,21 +5,20 @@ block content
   .row
     .small-12.columns
       if userData.length
-        table
-          thead
-            th Created
-            th Email
-            th Role
-            th
-          tbody
-            each u in userData
-              tr
-                td= moment(u.createdAt).format('MM/DD/YYYY')
-                td= u.email
-                td= u.isAdmin ? "Admin":"Subscriber"
-                if user.isAdmin && u.email !== user.email
-                    td: a.button.delete-user.tiny.alert(data-user-id=u.id) Delete
-                else
-                  td
-      else
-        h4 No Users
+        each u in userData
+          .row
+            .small-12.columns
+              .panel
+                h3
+                  span= u.profile.lastName
+                  span= ", "
+                  span= u.profile.firstName
+                h5.subheader= u.isAdmin ? "Administrator":"Subscriber"
+                h5.subheader= u.email
+                p
+                  span= u.profile.city
+                  span= ", "
+                  span= u.profile.state
+                p
+                  span= "Member Since: "
+                  span= moment(u.createdAt).format('MM/DD/YYYY')

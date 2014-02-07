@@ -40,12 +40,20 @@ function sendAjaxRequest(url, data, verb, altVerb, event, successFn){
   if(event) event.preventDefault();
 }
 
-function sendAjaxFiles(url, data, verb, altVerb, event, successFn){
+function sendAjaxFiles(url, data, verb, altVerb, event, successFn, listenFn){
   var options = {};
+  if(listenFn){
+    options.xhr = function() {
+      var xhr = new window.XMLHttpRequest();
+      xhr.upload.addEventListener("progress", listenFn, false);
+      return xhr;
+    }
+  }
   options.url = url;
   options.type = verb;
   options.data = data;
   options.success = successFn;
+  options.ajaxStart = listenFn;
   options.processData = false;
   options.contentType = false;
 

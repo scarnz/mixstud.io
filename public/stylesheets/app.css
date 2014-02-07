@@ -7658,3 +7658,38 @@ h2.number {
 .file-thumb {
   width: 150px;
 }
+
+/* line 284, ../scss/app.scss */
+#progress {
+  margin: 20px 0 0 100px;
+  width: 200px;
+  background-color: transparent;
+  border-radius: 12px;
+  /* (height of inner div) / 2 + padding */
+  padding: 2px;
+}
+
+/* line 292, ../scss/app.scss */
+#progress > .bar {
+  background-color: #fbc35a;
+  width: 0%;
+  /* Adjust with JavaScript */
+  height: 22px;
+  border-radius: 11px;
+}
+
+/* line 299, ../scss/app.scss */
+#spinner {
+  margin: 11px 0 0 12px;
+}
+
+/* line 303, ../scss/app.scss */
+#progress > .percent {
+  margin: -27px 5px 0 0;
+}
+
+/* line 307, ../scss/app.scss */
+#progress > .error-text {
+  display: none;
+  font-size: 14px;
+}

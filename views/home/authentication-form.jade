@@ -2,8 +2,12 @@ form#authentication(action='/', method='post')
   fieldset
     legend Authentication
     .row
-      mixin field(6, 'text', 'email', 'Email')
-      mixin field(6, 'password', 'password', 'Password')
+      .large-6.medium-6.small-12.columns
+        label(for="email") Email Address:
+        input(type="text", name="email")
+      .large-6.medium-6.small-12.columns
+        label(for="password") Password:
+        input(type="password", name="password")
     .row
-      .small-9.columns: p#login-error.error-text
-      .small-3.columns: button#login.radius.success.small.expand Login
+      .large-9.medium-9.small-12.columns: p#login-error.error-text
+      .large-3.medium-3.small-4.small-offset-8.columns: button#login.radius.success.small.expand Login
