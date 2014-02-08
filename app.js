@@ -8,6 +8,7 @@ require('require-dir')('./models');
 var home = require('./routes/home');
 var users = require('./routes/users');
 var admin = require('./routes/admin');
+var upload = require('./routes/upload');
 
 var app = express();
 var RedisStore = require('connect-redis')(express);
@@ -23,9 +24,12 @@ var m = require('./lib/middleware');
 
 //-- HOME
 app.get('/', home.index);
-app.get('/upload', m.checkAuth, home.upload);
 
-app.post('/upload', m.checkAuth, home.dropbox);
+//-- UPLOAD
+app.get('/upload', m.checkAuth, upload.index);
+
+app.post('/upload', m.checkAuth, upload.upload);
+app.post('/upload/create', m.checkAuth, upload.create);
 
 //-- AUTH
 app.get('/login', home.login);

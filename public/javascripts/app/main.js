@@ -18,6 +18,7 @@ function clickUploadToS3(e){
   var $file = $('form#s3uploader input[type="file"]')[0].files[0];
   var fileData = new FormData();
   var fileName = $file.name;
+  var fileSize = $file.size;
   uploadSpinner();
   $('#spinner').css('display', 'block');
   $('#progress .error-text').css('display', 'none');
@@ -38,14 +39,25 @@ function clickUploadToS3(e){
       $('#spinner').css('display', 'none');
       $('#progress .percent').empty();
       $('#progress > .bar').css('width','0%');
+      var zipFileData = {
+        name: fileName,
+        size: fileSize,
+        createdBy: r.email
+      };
+      url = '/upload/create';
+      sendAjaxRequest(url, zipFileData, 'post', null, e, function(res){
+        if(res.status === 'error'){
+          console.log('DB ERROR');
+        } else {
+          console.log('DB RECORD CREATED');
+        }
+      });
     },
     function(data){
       if (data.lengthComputable) {
-        // var percent = Math.round((data.loaded / data.total) * 100);
         var percent = Math.round((data.loaded / data.total) * 10000) / 100;
         $('#progress .percent').text(percent.toFixed(2) + '%');
         $('#progress .bar').css('width', percent + '%');
-
       }
     });
   });
